@@ -39,8 +39,8 @@
    // Exemple : la fonction "optim" de Scilab
    //
    exec('OraclePG.sci');
-   exec('Gradient_C.sci');
-   titrgr = "Gradient conjugué à pas variable";
+   exec('BFGS.sci');
+   titrgr = "BFGS à pas variable";
 
    // -----> A completer...
    // -----> A completer...
@@ -60,7 +60,7 @@
 
    // Exemple : la fonction "optim" de Scilab
    //
- [fopt,xopt,gopt] = Gradient_C(OraclePG,xini);
+ [fopt,xopt,gopt] = BFGS(OraclePG,xini);
 
    // -----> A completer...
 
