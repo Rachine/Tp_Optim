@@ -42,9 +42,6 @@
    exec('BFGS.sci');
    titrgr = "BFGS à pas variable";
 
-   // -----> A completer...
-   // -----> A completer...
-   // -----> A completer...
 
 // ------------------------------
 // Initialisation de l'algorithme

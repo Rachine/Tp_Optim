@@ -43,18 +43,22 @@ function [fopt,xopt,gopt]=BFGS(Oracle,xini)
     dim=size(G)
     Id=eye(dim(1),dim(1));
     Wqs=Id;
-   kstar = iter;
-   for k=1:iter
+    D=-G;
+    x_av=x;
+    [alpha,ok] = Wolfe(alphai,x,D,Oracle);
+    x = x + (alpha*D); 
+    kstar = iter;
+    for k=2:iter
        
 
    stop=0;
-   while stop~=2
+
 
 //    - valeur du critere et du gradient
       [F_av,G_av]=(F,G);
       ind = 4;
       [F,G] = Oracle(x,ind);
-      diffx=F-F_av;
+      diffx=x-x_av;
       diffg=G-G_av;
 //    - test de convergence
 
@@ -77,7 +81,7 @@ function [fopt,xopt,gopt]=BFGS(Oracle,xini)
 
 
 //    - mise a jour des variables
-
+      x_av=x;
       x = x + (alpha*D);
         
 //    - evolution du gradient, du pas et du critere
@@ -86,7 +90,6 @@ function [fopt,xopt,gopt]=BFGS(Oracle,xini)
       logP = [ logP ; log10(alpha) ];
       Cout = [ Cout ; F ];
 
-   end
    end
 // ---------------------------
 // Resultats de l'optimisation
