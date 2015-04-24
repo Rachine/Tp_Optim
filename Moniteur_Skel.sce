@@ -38,9 +38,9 @@
    //
    // Exemple : la fonction "optim" de Scilab
    //
-   exec('OraclePG.sci');
-   exec('BFGS.sci');
-   titrgr = "BFGS à pas variable";
+   exec('OracleDG.sci');
+   exec('Gradient_V.sci');
+   titrgr = "Gradient à pas variable pour le problème dual";
 
 
 // ------------------------------
@@ -49,7 +49,7 @@
 
    // La dimension (n-md) est celle du probleme primal
 
-   xini = 0.1 * rand(n-md,1);
+   xini = 0.1 * rand(md,1);
 
 // ----------------------------
 // Minimisation proprement dite
@@ -57,7 +57,7 @@
 
    // Exemple : la fonction "optim" de Scilab
    //
- [fopt,xopt,gopt] = BFGS(OraclePG,xini);
+ [fopt,xopt,gopt] = Gradient_V(OracleDG,xini);
 
    // -----> A completer...
 
@@ -65,7 +65,7 @@
 // Verification des resultats
 // --------------------------
 
-   [q,z,f,p] = HydrauliqueP(xopt);
+   [q,z,f,p] = HydrauliqueD(xopt);
 
    Verification(q,z,f,p);
 

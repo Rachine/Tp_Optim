@@ -1,0 +1,7 @@
+avec BFGS
+debit 2.22 e-16
+pression 0.0000234
+
+avec grad_v
+debit 2.22 e-16
+pression 0.0000010
