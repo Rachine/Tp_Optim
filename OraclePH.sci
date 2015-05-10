@@ -17,8 +17,8 @@ function [y] = deriv(qc)
   
 
 function [y]= hessien(qc)
-        d = diag(r.*abs(q0+B*qc));
-        y= 2*B'*d*B;
+        d = diag(r.*(abs(q0+B*qc)+(q0+B*qc)));
+        y= B'*d*B;
     
 endfunction
   
